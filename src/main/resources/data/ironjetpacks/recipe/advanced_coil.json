@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " DR",
+    "DSD",
+    "RD "
+  ],
+  "key": {
+    "R": "#c:dusts/redstone",
+    "D": "#c:ingots/gold",
+    "S": "#c:rods/wooden"
+  },
+  "result": {
+    "id": "ironjetpacks:advanced_coil"
+  }
+}

@@ -1,0 +1,34 @@
+license="MIT"
+
+[[mods]]
+    issueTrackerURL="https://github.com/BlakeBr0/IronJetpacks/issues"
+    modId="ironjetpacks"
+    version="${mod_version}"
+    displayName="Iron Jetpacks"
+    updateJSONURL="https://api.blakesmods.com/v2/mods/ironjetpacks/26.1/updates"
+    displayURL="https://blakesmods.com/iron-jetpacks"
+    # logoFile="examplemod.png"
+    authors="BlakeBr0"
+    credits="Tonius, Tomson124"
+    description='''
+    A fully customizable FE powered jetpacks mod!
+    '''
+
+    [[dependencies.ironjetpacks]]
+        modId="neoforge"
+        mandatory=true
+        versionRange="[26.1.2.41-beta,)"
+        ordering="NONE"
+        side="BOTH"
+    [[dependencies.ironjetpacks]]
+        modId="minecraft"
+        mandatory=true
+        versionRange="[26.1.2,26.2)"
+        ordering="NONE"
+        side="BOTH"
+    [[dependencies.ironjetpacks]]
+        modId="cucumber"
+        mandatory=true
+        versionRange="[${cucumber_version},)"
+        ordering="NONE"
+        side="BOTH"
