@@ -1,19 +1,25 @@
 {
 	"schemaVersion": 1,
-	"id": "iron-jetpacks",
+	"id": "ironjetpacks",
 	"version": "${version}",
 	"name": "Iron Jetpacks",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A fully customizable energy-powered jetpacks mod.",
 	"authors": [
-		"Me!"
+		"BlakeBr0"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://blakesmods.com/iron-jetpacks",
+		"sources": "https://github.com/BlakeBr0/IronJetpacks"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/iron-jetpacks/icon.png",
 	"environment": "*",
+	"mixins": [
+		"iron-jetpacks.mixins.json",
+		{
+			"config": "iron-jetpacks.client.mixins.json",
+			"environment": "client"
+		}
+	],
 	"entrypoints": {
 		"main": [
 			"com.blakebr0.ironjetpacks.IronJetpacks"
@@ -22,13 +28,6 @@
 			"com.blakebr0.ironjetpacks.client.IronJetpacksClient"
 		]
 	},
-	"mixins": [
-		"iron-jetpacks.mixins.json",
-		{
-			"config": "iron-jetpacks.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.19.3",
 		"minecraft": "~26.1.2",

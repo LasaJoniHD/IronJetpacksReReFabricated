@@ -133,7 +133,7 @@ public class Jetpack {
 			if (!this.craftingMaterialString.equalsIgnoreCase("null")) {
 				var parts = craftingMaterialString.split(":");
 				if (parts.length >= 3 && this.craftingMaterialString.startsWith("tag:")) {
-					var tag = ItemTags.create(Identifier.fromNamespaceAndPath(parts[1], parts[2]));
+					var tag = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, Identifier.fromNamespaceAndPath(parts[1], parts[2]));
 
 					registries.get(tag)
 							.ifPresent(items -> this.craftingMaterial = Ingredient.of(items));
@@ -150,12 +150,8 @@ public class Jetpack {
 	}
 
 	public Component getDisplayName() {
-		var key = String.format("jetpack.%s.name", this.name.replace(" ", "_"));
-		if (Language.getInstance().has(key)) {
-			return Component.translatable(key);
-		}
+		var key = String.format("jetpack.%s.name", this.name.replace(" ", "_"));        return Component.translatableWithFallback(key, this.displayName);
 
-		return Component.literal(this.displayName);
 	}
 
 	public ItemAttributeModifiers createAttributeModifiers() {

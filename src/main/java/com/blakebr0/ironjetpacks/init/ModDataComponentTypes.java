@@ -3,25 +3,40 @@ package com.blakebr0.ironjetpacks.init;
 import com.blakebr0.ironjetpacks.IronJetpacks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.Identifier;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ModDataComponentTypes {
-    public static final DeferredRegister<DataComponentType<?>> REGISTRY = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, IronJetpacks.MOD_ID);
+    public static void initialize() {
+    }
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Identifier>> JETPACK_ID = REGISTRY.register("jetpack_id",
-            () -> DataComponentType.<Identifier>builder().persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC).build());
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> JETPACK_ENGINE = REGISTRY.register("jetpack_engine",
-            () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL).build());
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> JETPACK_HOVER = REGISTRY.register("jetpack_hover",
-            () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL).build());
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Double>> JETPACK_THROTTLE = REGISTRY.register("jetpack_throttle",
-            () -> DataComponentType.<Double>builder().persistent(Codec.DOUBLE).networkSynchronized(ByteBufCodecs.DOUBLE).build());
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> JETPACK_HUD = REGISTRY.register("jetpack_hud",
-            () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL).build());
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> JETPACK_ENERGY = REGISTRY.register("jetpack_energy",
-            () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
+    public static final DataComponentType<net.minecraft.resources.Identifier> JETPACK_ID = register(
+            "jetpack_id", DataComponentType.<net.minecraft.resources.Identifier>builder()
+                    .persistent(net.minecraft.resources.Identifier.CODEC)
+                    .networkSynchronized(net.minecraft.resources.Identifier.STREAM_CODEC)
+                    .build());
+    public static final DataComponentType<Boolean> JETPACK_ENGINE = register(
+            "jetpack_engine", DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+    public static final DataComponentType<Boolean> JETPACK_HOVER = register(
+            "jetpack_hover", DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+    public static final DataComponentType<Double> JETPACK_THROTTLE = register(
+            "jetpack_throttle", DataComponentType.<Double>builder()
+                    .persistent(Codec.DOUBLE)
+                    .networkSynchronized(ByteBufCodecs.DOUBLE)
+                    .build());
+    public static final DataComponentType<Boolean> JETPACK_HUD = register(
+            "jetpack_hud", DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    private static <T> DataComponentType<T> register(String name, DataComponentType<T> type) {
+        return net.minecraft.core.Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, IronJetpacks.id(name), type);
+    }
 }

@@ -4,7 +4,7 @@
     "model": "ironjetpacks:item/capacitor",
     "tints": [
       {
-        "type": "cucumber:item_colors",
+        "type": "ironjetpacks:item_colors",
         "index": 0
       }
     ]

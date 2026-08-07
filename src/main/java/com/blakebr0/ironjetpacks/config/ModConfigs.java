@@ -1,111 +1,182 @@
 package com.blakebr0.ironjetpacks.config;
 
-import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.common.ModConfigSpec;
+import com.blakebr0.ironjetpacks.IronJetpacks;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import net.fabricmc.loader.api.FabricLoader;
+
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public final class ModConfigs {
-	public static final ModConfigSpec CLIENT;
-	public static final ModConfigSpec COMMON;
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("ironjetpacks.json");
 
-	public static final ModConfigSpec.BooleanValue ENABLE_JETPACK_SOUNDS;
-	public static final ModConfigSpec.BooleanValue ENABLE_JETPACK_PARTICLES;
-	public static final ModConfigSpec.BooleanValue ENABLE_ADVANCED_INFO_TOOLTIPS;
+    public static final BoolValue ENABLE_JETPACK_SOUNDS = new BoolValue("jetpackSounds", true);
+    public static final BoolValue ENABLE_JETPACK_PARTICLES = new BoolValue("jetpackParticles", true);
+    public static final BoolValue ENABLE_ADVANCED_INFO_TOOLTIPS = new BoolValue("advancedTooltips", true);
+    public static final BoolValue ENABLE_HUD = new BoolValue("enableHud", true);
+    public static final IntValue HUD_POSITION = new IntValue("hudPosition", 1, 0, 5);
+    public static final IntValue HUD_OFFSET_X = new IntValue("hudOffsetX", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public static final IntValue HUD_OFFSET_Y = new IntValue("hudOffsetY", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public static final DoubleValue HUD_ANIMATION_SPEED = new DoubleValue("hudAnimationSpeed", 0.1D, 0.0D, 1.0D);
+    public static final BoolValue SHOW_HUD_OVER_CHAT = new BoolValue("showHudOverChat", false);
 
-	public static final ModConfigSpec.BooleanValue ENABLE_HUD;
-	public static final ModConfigSpec.IntValue HUD_POSITION;
-	public static final ModConfigSpec.IntValue HUD_OFFSET_X;
-	public static final ModConfigSpec.IntValue HUD_OFFSET_Y;
-	public static final ModConfigSpec.DoubleValue HUD_ANIMATION_SPEED;
-	public static final ModConfigSpec.BooleanValue SHOW_HUD_OVER_CHAT;
+    public static final BoolValue ENCHANTABLE_JETPACKS = new BoolValue("enchantableJetpacks", false);
+    public static final BoolValue ENABLE_CURIOS_INTEGRATION = new BoolValue("curiosIntegration", false);
+    public static final BoolValue ENABLE_CELL_RECIPES = new BoolValue("cellRecipes", true);
+    public static final BoolValue ENABLE_THRUSTER_RECIPES = new BoolValue("thrusterRecipes", true);
+    public static final BoolValue ENABLE_CAPACITOR_RECIPES = new BoolValue("capacitorRecipes", true);
+    public static final BoolValue ENABLE_JETPACK_RECIPES = new BoolValue("jetpackRecipes", true);
 
-	// Client
-	static {
-		final var client = new ModConfigSpec.Builder();
+    private ModConfigs() {
+    }
 
-		client.comment("General configuration options.").push("General");
-		ENABLE_JETPACK_SOUNDS = client
-				.comment("Enable jetpack sounds?")
-				.define("jetpackSounds", true);
-		ENABLE_JETPACK_PARTICLES = client
-				.comment("Enable jetpack particles?")
-				.define("jetpackParticles", true);
-		ENABLE_ADVANCED_INFO_TOOLTIPS = client
-				.comment("Enable jetpack stat tooltips?")
-				.define("advancedTooltips", true);
-		client.pop();
+    /** Loads the config and writes missing/default values back to disk. */
+    public static void load() {
+        var values = new JsonObject();
+        if (Files.isRegularFile(CONFIG_FILE)) {
+            try (Reader reader = Files.newBufferedReader(CONFIG_FILE, StandardCharsets.UTF_8)) {
+                var parsed = JsonParser.parseReader(reader);
+                if (parsed.isJsonObject()) values = parsed.getAsJsonObject();
+            } catch (Exception e) {
+                IronJetpacks.LOGGER.error("Could not read config {}; using defaults", CONFIG_FILE, e);
+            }
+        }
 
-		client.comment("HUD configuration options.").push("HUD");
-		ENABLE_HUD = client
-				.comment("Enable the HUD?")
-				.define("enable", true);
-		HUD_POSITION = client
-				.comment("The position preset for the HUD.", "0=Top Left, 1=Middle Left, 2=Bottom Left, 3=Top Right, 4=Middle Right, 5=Bottom Right")
-				.defineInRange("position", 1, 0, 5);
-		HUD_OFFSET_X = client
-				.comment("The X offset for the HUD.")
-				.defineInRange("offsetX", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
-		HUD_OFFSET_Y = client
-				.comment("The Y offset for the HUD.")
-				.defineInRange("offsetY", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
-		HUD_ANIMATION_SPEED = client
-				.comment("The animation speed for the HUD. lower = slower, higher = faster. 1 is instant.")
-				.defineInRange("animationSpeed", 0.1d, 0d, 1d);
-		SHOW_HUD_OVER_CHAT = client
-				.comment("Show HUD over the chat?")
-				.define("showOverChat", false);
-		client.pop();
+        ENABLE_JETPACK_SOUNDS.load(values);
+        ENABLE_JETPACK_PARTICLES.load(values);
+        ENABLE_ADVANCED_INFO_TOOLTIPS.load(values);
+        ENABLE_HUD.load(values);
+        HUD_POSITION.load(values);
+        HUD_OFFSET_X.load(values);
+        HUD_OFFSET_Y.load(values);
+        HUD_ANIMATION_SPEED.load(values);
+        SHOW_HUD_OVER_CHAT.load(values);
+        ENCHANTABLE_JETPACKS.load(values);
+        ENABLE_CURIOS_INTEGRATION.load(values);
+        ENABLE_CELL_RECIPES.load(values);
+        ENABLE_THRUSTER_RECIPES.load(values);
+        ENABLE_CAPACITOR_RECIPES.load(values);
+        ENABLE_JETPACK_RECIPES.load(values);
 
-		CLIENT = client.build();
-	}
+        try {
+            Files.createDirectories(CONFIG_FILE.getParent());
+            try (Writer writer = Files.newBufferedWriter(CONFIG_FILE, StandardCharsets.UTF_8)) {
+                GSON.toJson(values, writer);
+            }
+        } catch (Exception e) {
+            IronJetpacks.LOGGER.error("Could not write config {}", CONFIG_FILE, e);
+        }
+    }
 
-	public static final ModConfigSpec.BooleanValue ENCHANTABLE_JETPACKS;
-	public static final ModConfigSpec.BooleanValue ENABLE_CURIOS_INTEGRATION;
+    public static boolean isCuriosInstalled() {
+        return false;
+    }
 
-	public static final ModConfigSpec.BooleanValue ENABLE_CELL_RECIPES;
-	public static final ModConfigSpec.BooleanValue ENABLE_THRUSTER_RECIPES;
-	public static final ModConfigSpec.BooleanValue ENABLE_CAPACITOR_RECIPES;
-	public static final ModConfigSpec.BooleanValue ENABLE_JETPACK_RECIPES;
+    public static boolean isControllableInstalled() {
+        return false;
+    }
 
-	// Common
-	static {
-		final var common = new ModConfigSpec.Builder();
+    public static boolean isCuriosEnabled() {
+        return false;
+    }
 
-		common.comment("General configuration options.").push("General");
-		ENCHANTABLE_JETPACKS = common
-				.comment("Should jetpacks be enchantable?")
-				.define("enchantableJetpacks", false);
-		ENABLE_CURIOS_INTEGRATION = common
-				.comment("Enable Curios integration.")
-				.define("curiosIntegration", true);
-		common.pop();
+    public static boolean isModLoaded(String id) {
+        return FabricLoader.getInstance().isModLoaded(id);
+    }
 
-		common.comment("Dynamic recipe options.").push("Recipe");
-		ENABLE_CELL_RECIPES = common
-				.comment("Enable default recipes for Energy Cells?")
-				.define("cells", true);
-		ENABLE_THRUSTER_RECIPES = common
-				.comment("Enable default recipes for Thrusters?")
-				.define("thrusters", true);
-		ENABLE_CAPACITOR_RECIPES = common
-				.comment("Enable default recipes for Capacitors?")
-				.define("capacitors", true);
-		ENABLE_JETPACK_RECIPES = common
-				.comment("Enable default recipes for Jetpacks?")
-				.define("jetpacks", true);
-		common.pop();
+    public static final class BoolValue {
+        private final String key;
+        private final boolean defaultValue;
+        private boolean value;
 
-		COMMON = common.build();
-	}
+        public BoolValue(String key, boolean defaultValue) {
+            this.key = key;
+            this.defaultValue = defaultValue;
+            this.value = defaultValue;
+        }
 
-	public static boolean isCuriosInstalled() {
-		return ModList.get().isLoaded("curios");
-	}
+        private void load(JsonObject values) {
+            var json = values.get(key);
+            value = json != null && json.isJsonPrimitive() && json.getAsJsonPrimitive().isBoolean()
+                    ? json.getAsBoolean() : defaultValue;
+            values.addProperty(key, value);
+        }
 
-	public static boolean isControllableInstalled() {
-		return ModList.get().isLoaded("controllable");
-	}
+        public boolean get() {
+            return value;
+        }
+    }
 
-	public static boolean isCuriosEnabled() {
-		return isCuriosInstalled() && ENABLE_CURIOS_INTEGRATION.get();
-	}
+    public static final class IntValue {
+        private final String key;
+        private final int defaultValue;
+        private final int min;
+        private final int max;
+        private int value;
+
+        public IntValue(String key, int defaultValue, int min, int max) {
+            this.key = key;
+            this.defaultValue = defaultValue;
+            this.min = min;
+            this.max = max;
+            this.value = defaultValue;
+        }
+
+        private void load(JsonObject values) {
+            var json = values.get(key);
+            value = defaultValue;
+            if (json != null && json.isJsonPrimitive() && json.getAsJsonPrimitive().isNumber()) {
+                try {
+                    var number = json.getAsJsonPrimitive().getAsBigDecimal();
+                    if (number.stripTrailingZeros().scale() <= 0) {
+                        value = Math.clamp(number.intValueExact(), min, max);
+                    }
+                } catch (ArithmeticException ignored) {
+                    // Keep the default for non-integral or out-of-range values.
+                }
+            }
+            values.addProperty(key, value);
+        }
+
+        public int get() {
+            return value;
+        }
+    }
+
+    public static final class DoubleValue {
+        private final String key;
+        private final double defaultValue;
+        private final double min;
+        private final double max;
+        private double value;
+
+        public DoubleValue(String key, double defaultValue, double min, double max) {
+            this.key = key;
+            this.defaultValue = defaultValue;
+            this.min = min;
+            this.max = max;
+            this.value = defaultValue;
+        }
+
+        private void load(JsonObject values) {
+            var json = values.get(key);
+            value = defaultValue;
+            if (json != null && json.isJsonPrimitive() && json.getAsJsonPrimitive().isNumber()) {
+                double candidate = json.getAsDouble();
+                if (Double.isFinite(candidate)) value = Math.clamp(candidate, min, max);
+            }
+            values.addProperty(key, value);
+        }
+
+        public double get() {
+            return value;
+        }
+    }
 }

@@ -1,27 +1,24 @@
 package com.blakebr0.ironjetpacks.network;
 
-import com.blakebr0.ironjetpacks.network.payloads.DecrementThrottlePayload;
-import com.blakebr0.ironjetpacks.network.payloads.IncrementThrottlePayload;
-import com.blakebr0.ironjetpacks.network.payloads.SyncJetpacksPayload;
-import com.blakebr0.ironjetpacks.network.payloads.ToggleEnginePayload;
-import com.blakebr0.ironjetpacks.network.payloads.ToggleHUDPayload;
-import com.blakebr0.ironjetpacks.network.payloads.ToggleHoverPayload;
-import com.blakebr0.ironjetpacks.network.payloads.UpdateInputPayload;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import com.blakebr0.ironjetpacks.network.payloads.*;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public final class NetworkHandler {
-	@SubscribeEvent
-	public void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
-		var registrar = event.registrar("1");
+    public static void initialize() {
+        PayloadTypeRegistry.serverboundPlay().register(DecrementThrottlePayload.TYPE, DecrementThrottlePayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(IncrementThrottlePayload.TYPE, IncrementThrottlePayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(ToggleEnginePayload.TYPE, ToggleEnginePayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(ToggleHoverPayload.TYPE, ToggleHoverPayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(ToggleHUDPayload.TYPE, ToggleHUDPayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(UpdateInputPayload.TYPE, UpdateInputPayload.STREAM_CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(SyncJetpacksPayload.TYPE, SyncJetpacksPayload.STREAM_CODEC);
 
-		registrar.playToServer(DecrementThrottlePayload.TYPE, DecrementThrottlePayload.STREAM_CODEC, DecrementThrottlePayload::handleServer);
-		registrar.playToServer(IncrementThrottlePayload.TYPE, IncrementThrottlePayload.STREAM_CODEC, IncrementThrottlePayload::handleServer);
-		registrar.playToServer(ToggleEnginePayload.TYPE, ToggleEnginePayload.STREAM_CODEC, ToggleEnginePayload::handleServer);
-		registrar.playToServer(ToggleHoverPayload.TYPE, ToggleHoverPayload.STREAM_CODEC, ToggleHoverPayload::handleServer);
-		registrar.playToServer(ToggleHUDPayload.TYPE, ToggleHUDPayload.STREAM_CODEC, ToggleHUDPayload::handleServer);
-		registrar.playToServer(UpdateInputPayload.TYPE, UpdateInputPayload.STREAM_CODEC, UpdateInputPayload::handleServer);
-
-		registrar.playToClient(SyncJetpacksPayload.TYPE, SyncJetpacksPayload.STREAM_CODEC, SyncJetpacksPayload::handleClient);
-	}
+        ServerPlayNetworking.registerGlobalReceiver(DecrementThrottlePayload.TYPE, DecrementThrottlePayload::handleServer);
+        ServerPlayNetworking.registerGlobalReceiver(IncrementThrottlePayload.TYPE, IncrementThrottlePayload::handleServer);
+        ServerPlayNetworking.registerGlobalReceiver(ToggleEnginePayload.TYPE, ToggleEnginePayload::handleServer);
+        ServerPlayNetworking.registerGlobalReceiver(ToggleHoverPayload.TYPE, ToggleHoverPayload::handleServer);
+        ServerPlayNetworking.registerGlobalReceiver(ToggleHUDPayload.TYPE, ToggleHUDPayload::handleServer);
+        ServerPlayNetworking.registerGlobalReceiver(UpdateInputPayload.TYPE, UpdateInputPayload::handleServer);
+    }
 }

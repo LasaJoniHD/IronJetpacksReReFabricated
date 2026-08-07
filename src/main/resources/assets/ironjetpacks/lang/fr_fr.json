@@ -12,6 +12,25 @@
   "item.ironjetpacks.capacitor": "Condensateur en %s",
   "item.ironjetpacks.jetpack": "Jetpack en %s",
 
+  "jetpack.wood.name": "Bois",
+  "jetpack.stone.name": "Pierre",
+  "jetpack.copper.name": "Cuivre",
+  "jetpack.iron.name": "Fer",
+  "jetpack.gold.name": "Or",
+  "jetpack.diamond.name": "Diamant",
+  "jetpack.emerald.name": "Émeraude",
+  "jetpack.creative.name": "Créatif",
+  "jetpack.bronze.name": "Bronze",
+  "jetpack.silver.name": "Argent",
+  "jetpack.steel.name": "Acier",
+  "jetpack.electrum.name": "Électrum",
+  "jetpack.invar.name": "Invar",
+  "jetpack.platinum.name": "Platine",
+
+  "keybind.ironjetpacks.hud": "Basculer le HUD",
+  "keybind.ironjetpacks.ascend": "Monter",
+
+  "key.category.ironjetpacks.keybindings": "Jetpacks de fer",
   "keybind.ironjetpacks.engine": "Basculer le moteur",
   "keybind.ironjetpacks.hover": "Basculer le mode survol",
   "keybind.ironjetpacks.descend": "Descendre",
@@ -25,6 +44,7 @@
   "tooltip.ironjetpacks.infinite": "Infinit",
   "tooltip.ironjetpacks.engine": "MOTEUR",
   "tooltip.ironjetpacks.hover": "SURVOL",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "NIVEAU %s",
   "tooltip.ironjetpacks.throttle": "Manette de Gaz : %s",
   "tooltip.ironjetpacks.fuel_usage": "Consommation de carburant : %s",
@@ -32,11 +52,16 @@
   "tooltip.ironjetpacks.vertical_acceleration": "Accélération verticale : %s",
   "tooltip.ironjetpacks.horizontal_speed": "Vitesse horizontale : %s",
   "tooltip.ironjetpacks.hover_speed": "Vitesse de survol : %s",
+  "tooltip.ironjetpacks.hover_ascend_speed": "Vitesse de montée : %s",
   "tooltip.ironjetpacks.hover_descend_speed": "Vitesse de descente : %s",
   "tooltip.ironjetpacks.sprint_modifier": "Modificateur de sprint : %s",
   "tooltip.ironjetpacks.sprint_vertical_modifier": "Multiplicateur vertical de sprint : %s",
   "tooltip.ironjetpacks.sprint_fuel_modifier": "Modificateur de carburant de sprint : %s",
   "tooltip.ironjetpacks.toggle_engine": "Moteur basculé %s",
   "tooltip.ironjetpacks.toggle_hover": "Survol basculé %s",
-  "tooltip.ironjetpacks.change_throttle": "Accélérateur réglé sur %s"
+  "tooltip.ironjetpacks.change_throttle": "Accélérateur réglé sur %s",
+  "tooltip.ironjetpacks.toggle_hud": "HUD basculé %s",
+  "tooltip.ironjetpacks.jetpack_id": "ID du jetpack : %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Maintenez Maj pour plus d'informations"
 }

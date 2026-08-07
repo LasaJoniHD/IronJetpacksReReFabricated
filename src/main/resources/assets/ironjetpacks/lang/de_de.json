@@ -12,6 +12,25 @@
   "item.ironjetpacks.capacitor": "%s Kondensator",
   "item.ironjetpacks.jetpack": "%s Jetpack",
 
+  "jetpack.wood.name": "Holz",
+  "jetpack.stone.name": "Stein",
+  "jetpack.copper.name": "Kupfer",
+  "jetpack.iron.name": "Eisen",
+  "jetpack.gold.name": "Gold",
+  "jetpack.diamond.name": "Diamant",
+  "jetpack.emerald.name": "Smaragd",
+  "jetpack.creative.name": "Kreativ",
+  "jetpack.bronze.name": "Bronze",
+  "jetpack.silver.name": "Silber",
+  "jetpack.steel.name": "Stahl",
+  "jetpack.electrum.name": "Electrum",
+  "jetpack.invar.name": "Invar",
+  "jetpack.platinum.name": "Platin",
+
+  "keybind.ironjetpacks.hud": "HUD umschalten",
+  "keybind.ironjetpacks.ascend": "Aufsteigen",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Antrieb umschalten",
   "keybind.ironjetpacks.hover": "Schwebeflug umschalten",
   "keybind.ironjetpacks.descend": "Absinken",
@@ -25,6 +44,7 @@
   "tooltip.ironjetpacks.infinite": "Unendlich",
   "tooltip.ironjetpacks.engine": "ANTRIEB",
   "tooltip.ironjetpacks.hover": "SCHWEBEFLUG",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "STUFE %s",
   "tooltip.ironjetpacks.throttle": "Schub: %s",
   "tooltip.ironjetpacks.fuel_usage": "Spritverbrauch: %s",
@@ -40,5 +60,8 @@
   "tooltip.ironjetpacks.toggle_engine": "Antrieb umgeschaltet %s",
   "tooltip.ironjetpacks.toggle_hover": "Schwebeflug umgeschaltet %s",
   "tooltip.ironjetpacks.change_throttle": "Schub gesetzt auf %s",
-  "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s"
+  "tooltip.ironjetpacks.toggle_hud": "HUD umgeschaltet %s",
+  "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Shift gedrückt halten für weitere Informationen"
 }

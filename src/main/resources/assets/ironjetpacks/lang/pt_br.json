@@ -12,6 +12,22 @@
   "item.ironjetpacks.capacitor": "Capacitor de %s",
   "item.ironjetpacks.jetpack": "Jetpack de %s",
 
+  "jetpack.wood.name": "Madeira",
+  "jetpack.stone.name": "Pedra",
+  "jetpack.copper.name": "Cobre",
+  "jetpack.iron.name": "Ferro",
+  "jetpack.gold.name": "Ouro",
+  "jetpack.diamond.name": "Diamante",
+  "jetpack.emerald.name": "Esmeralda",
+  "jetpack.creative.name": "Criativo",
+  "jetpack.bronze.name": "Bronze",
+  "jetpack.silver.name": "Prata",
+  "jetpack.steel.name": "Aço",
+  "jetpack.electrum.name": "Electrum",
+  "jetpack.invar.name": "Invar",
+  "jetpack.platinum.name": "Platina",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Alternar Motor",
   "keybind.ironjetpacks.hover": "Alternar Modo de Pairar",
   "keybind.ironjetpacks.hud": "Alternar HUD",
@@ -44,5 +60,7 @@
   "tooltip.ironjetpacks.toggle_hover": "Pairar %s",
   "tooltip.ironjetpacks.toggle_hud": "HUD %s",
   "tooltip.ironjetpacks.change_throttle": "Aceleração definida para %s",
-  "tooltip.ironjetpacks.jetpack_id": "ID do Jetpack: %s"
+  "tooltip.ironjetpacks.jetpack_id": "ID do Jetpack: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Segure Shift para mais informações"
 }

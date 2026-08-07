@@ -12,8 +12,25 @@
   "item.ironjetpacks.capacitor": "%s Kapasitör",
   "item.ironjetpacks.jetpack": "%s Sırt Roketi",
 
+  "jetpack.wood.name": "Ahşap",
+  "jetpack.stone.name": "Taş",
+  "jetpack.copper.name": "Bakır",
+  "jetpack.iron.name": "Demir",
+  "jetpack.gold.name": "Altın",
+  "jetpack.diamond.name": "Elmas",
+  "jetpack.emerald.name": "Zümrüt",
+  "jetpack.creative.name": "Yaratıcı",
+  "jetpack.bronze.name": "Bronz",
+  "jetpack.silver.name": "Gümüş",
+  "jetpack.steel.name": "Çelik",
+  "jetpack.electrum.name": "Elektrum",
+  "jetpack.invar.name": "İnvar",
+  "jetpack.platinum.name": "Platin",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Motoru Aç/Kapat",
   "keybind.ironjetpacks.hover": "Hover Modunu Aç/Kapat",
+  "keybind.ironjetpacks.hud": "HUD'yi Aç/Kapat",
   "keybind.ironjetpacks.ascend": "Yüksel",
   "keybind.ironjetpacks.descend": "Alçal",
   "keybind.ironjetpacks.increment_throttle": "Gazı Artır",
@@ -26,6 +43,7 @@
   "tooltip.ironjetpacks.infinite": "Sonsuz",
   "tooltip.ironjetpacks.engine": "MOTOR",
   "tooltip.ironjetpacks.hover": "HOVER",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "Kademe %s",
   "tooltip.ironjetpacks.throttle": "Gaz: %s",
   "tooltip.ironjetpacks.fuel_usage": "Yakıt Kullanımı: %s",
@@ -41,5 +59,8 @@
   "tooltip.ironjetpacks.toggle_engine": "Motor %s",
   "tooltip.ironjetpacks.toggle_hover": "Hover %s",
   "tooltip.ironjetpacks.change_throttle": "Gaz şuna ayarlandı: %s",
-  "tooltip.ironjetpacks.jetpack_id": "Sırt Roketi ID'si: %s"
+  "tooltip.ironjetpacks.toggle_hud": "HUD %s",
+  "tooltip.ironjetpacks.jetpack_id": "Sırt Roketi ID'si: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Daha fazla bilgi için Shift tuşunu basılı tutun"
 }

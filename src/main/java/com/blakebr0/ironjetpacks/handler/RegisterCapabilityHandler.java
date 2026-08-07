@@ -1,19 +1,20 @@
 package com.blakebr0.ironjetpacks.handler;
 
-import com.blakebr0.ironjetpacks.init.ModDataComponentTypes;
 import com.blakebr0.ironjetpacks.init.ModItems;
+import com.blakebr0.ironjetpacks.util.JetpackEnergyStorage;
 import com.blakebr0.ironjetpacks.util.JetpackUtils;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.transfer.energy.ItemAccessEnergyHandler;
+import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
+import team.reborn.energy.api.EnergyStorage;
 
 public final class RegisterCapabilityHandler {
-    @SubscribeEvent
-    public void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerItem(Capabilities.Energy.ITEM, (stack, access) -> {
-            var jetpack = JetpackUtils.getJetpack(stack);
-            return new ItemAccessEnergyHandler(access, ModDataComponentTypes.JETPACK_ENERGY.get(), jetpack.capacity);
-        }, ModItems.JETPACK.get());
+    public static void initialize() {
+        EnergyStorage.ITEM.registerForItems(
+                (stack, context) -> {
+                    if (stack.getItem() != ModItems.JETPACK) return null;
+                    var jetpack = JetpackUtils.getJetpack(stack);
+                    return JetpackEnergyStorage.forContext(context, jetpack.capacity);
+                },
+                ModItems.JETPACK
+        );
     }
 }

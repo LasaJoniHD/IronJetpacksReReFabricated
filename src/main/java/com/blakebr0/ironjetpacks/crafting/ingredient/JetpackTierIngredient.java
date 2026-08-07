@@ -1,89 +1,37 @@
 package com.blakebr0.ironjetpacks.crafting.ingredient;
 
-import com.blakebr0.ironjetpacks.init.ModIngredientTypes;
-import com.blakebr0.ironjetpacks.registry.Jetpack;
+import com.blakebr0.ironjetpacks.IronJetpacks;
 import com.blakebr0.ironjetpacks.registry.JetpackRegistry;
 import com.blakebr0.ironjetpacks.util.JetpackUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredient;
+import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer;
 import net.minecraft.core.Holder;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.common.crafting.ICustomIngredient;
-import net.neoforged.neoforge.common.crafting.IngredientType;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class JetpackTierIngredient implements ICustomIngredient {
-    public static final MapCodec<JetpackTierIngredient> CODEC = RecordCodecBuilder.mapCodec(builder ->
-            builder.group(
-                    Codec.INT.fieldOf("tier").forGetter(ingredient -> ingredient.tier)
-            ).apply(builder, JetpackTierIngredient::new)
-    );
-
-    private final int tier;
-    private ItemStack[] stacks;
-
-    public JetpackTierIngredient(int tier) {
-        this.tier = tier;
-    }
-
-    @Override
-    public Stream<Holder<Item>> items() {
-        if (this.stacks == null) {
-            this.initMatchingStacks();
-        }
-
-        return Arrays.stream(this.stacks).map(s -> Holder.direct(s.getItem(), s.getComponents()));
-    }
-
-    @Override
-    public boolean test(@Nullable ItemStack stack) {
-        if (stack == null) {
-            return false;
-        } else if (!JetpackRegistry.getInstance().getAllTiers().contains(this.tier)) {
-            return stack.isEmpty();
-        } else {
-            if (this.stacks == null) {
-                this.initMatchingStacks();
-            }
-
-            for (var itemstack : this.stacks) {
-                if (itemstack.getItem() == stack.getItem()) {
-                    var jetpack = JetpackUtils.getJetpack(stack);
-                    return jetpack != Jetpack.UNDEFINED && jetpack.tier == this.tier;
-                }
-            }
-
-            return false;
-        }
-    }
-
-    @Override
-    public boolean isSimple() {
-        return false;
-    }
-
-    @Override
-    public IngredientType<?> getType() {
-        return ModIngredientTypes.JETPACK_TIER_INGREDIENT.get();
-    }
-
-    private void initMatchingStacks() {
-        this.stacks = JetpackRegistry.getInstance().getJetpacks()
-                .stream()
-                .filter(j -> j.getTier() == this.tier)
-                .map(JetpackUtils::getItemForJetpack)
-                .map(ItemStackTemplate::create)
-                .toArray(ItemStack[]::new);
-    }
+public record JetpackTierIngredient(int tier) implements CustomIngredient {
+    public static final MapCodec<JetpackTierIngredient> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
+            com.mojang.serialization.Codec.INT.fieldOf("tier").forGetter(JetpackTierIngredient::tier)
+    ).apply(builder, JetpackTierIngredient::new));
+    public static final CustomIngredientSerializer<JetpackTierIngredient> SERIALIZER = new CustomIngredientSerializer<>() {
+        @Override public net.minecraft.resources.Identifier getIdentifier() { return IronJetpacks.id("jetpack_tier"); }
+        @Override public MapCodec<JetpackTierIngredient> getCodec() { return CODEC; }
+        @Override public StreamCodec<RegistryFriendlyByteBuf, JetpackTierIngredient> getStreamCodec() { return StreamCodec.of((buf, value) -> buf.writeVarInt(value.tier), buf -> new JetpackTierIngredient(buf.readVarInt())); }
+    };
 
     public static Ingredient of(int tier) {
         return new JetpackTierIngredient(tier).toVanilla();
     }
+
+    @Override public boolean test(ItemStack stack) { return stack.getItem() == com.blakebr0.ironjetpacks.init.ModItems.JETPACK && JetpackUtils.getJetpack(stack).tier == tier; }
+    @Override public Stream<Holder<Item>> items() { return Stream.of(com.blakebr0.ironjetpacks.init.ModItems.JETPACK.builtInRegistryHolder()); }
+    @Override public boolean requiresTesting() { return true; }
+    @Override public CustomIngredientSerializer<?> getSerializer() { return SERIALIZER; }
+    @Override public Ingredient toVanilla() { return CustomIngredient.super.toVanilla(); }
 }

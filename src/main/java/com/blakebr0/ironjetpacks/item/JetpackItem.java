@@ -3,7 +3,6 @@ package com.blakebr0.ironjetpacks.item;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.cucumber.iface.IComponentInitializer;
 import com.blakebr0.cucumber.item.BaseArmorItem;
-import com.blakebr0.cucumber.lib.Tooltips;
 import com.blakebr0.cucumber.util.Formatting;
 import com.blakebr0.ironjetpacks.config.ModConfigs;
 import com.blakebr0.ironjetpacks.lib.ModArmorMaterials;
@@ -30,7 +29,6 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
         super(id, ModArmorMaterials.JETPACK, ArmorType.CHESTPLATE, p -> p
                 .stacksTo(1)
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
-                .setNoCombineRepair()
         );
     }
 
@@ -43,28 +41,30 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
     @Override
     public int getBarWidth(ItemStack stack) {
         var energy = JetpackUtils.getEnergyStorage(stack);
-        var stored = energy.getCapacityAsInt() - energy.getAmountAsInt();
-
-        return Math.round(13.0F - stored * 13.0F / energy.getCapacityAsInt());
+        var capacity = (int) energy.getCapacity();
+        if (capacity <= 0) return 0;
+        var stored = capacity - (int) energy.getAmount();
+        return Math.round(13.0F - stored * 13.0F / capacity);
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
         var energy = JetpackUtils.getEnergyStorage(stack);
-
-        float f = Math.max(0.0F, (float) energy.getAmountAsInt() / (float) energy.getCapacityAsInt());
-
+        var capacity = (int) energy.getCapacity();
+        if (capacity <= 0) return Mth.hsvToRgb(0.0F, 1.0F, 1.0F);
+        float f = Math.max(0.0F, (float) (int) energy.getAmount() / capacity);
         return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
     }
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        var jetpack = JetpackUtils.getJetpack(stack);
-        return !jetpack.creative;
+        return !JetpackUtils.getJetpack(stack).creative;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+        builder.accept(Component.translatable("itemGroup.ironjetpacks").withStyle(ChatFormatting.BLUE));
+
         var jetpack = JetpackUtils.getJetpack(stack);
 
         if (flag.isAdvanced()) {
@@ -74,7 +74,7 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
 
         if (!jetpack.creative) {
             var energy = JetpackUtils.getEnergyStorage(stack);
-            builder.accept(Formatting.number(energy.getAmountAsInt()).append(" / ").append(Formatting.energy(energy.getCapacityAsInt())).withStyle(ChatFormatting.GRAY));
+            builder.accept(Formatting.number(energy.getAmount()).append(" / ").append(Formatting.energy(energy.getCapacity())).withStyle(ChatFormatting.GRAY));
         } else {
             builder.accept(ModTooltips.INFINITE.toComponent().append(" FE"));
         }
@@ -90,34 +90,9 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
                 .append(hover).append(" | ").withStyle(ChatFormatting.GRAY)
                 .append(hud));
 
-        var throttle = Component.literal((int) (JetpackUtils.getThrottle(stack) * 100) + "%");
+        builder.accept(ModTooltips.THROTTLE.args(Component.literal((int) (JetpackUtils.getThrottle(stack) * 100) + "%")).toComponent()
+                .withStyle(ChatFormatting.GRAY));
 
-        builder.accept(ModTooltips.THROTTLE.args(throttle).toComponent());
-
-        if (ModConfigs.ENABLE_ADVANCED_INFO_TOOLTIPS.get()) {
-            builder.accept(Component.literal(" "));
-
-            if (!flag.hasShiftDown()) {
-                builder.accept(Tooltips.HOLD_SHIFT_FOR_INFO.toComponent());
-            } else {
-                builder.accept(ModTooltips.FUEL_USAGE.args(jetpack.usage + " FE/t").toComponent());
-                builder.accept(ModTooltips.VERTICAL_SPEED.args(jetpack.speedVert).toComponent());
-                builder.accept(ModTooltips.VERTICAL_ACCELERATION.args(jetpack.accelVert).toComponent());
-                builder.accept(ModTooltips.HORIZONTAL_SPEED.args(jetpack.speedSide).toComponent());
-                builder.accept(ModTooltips.HOVER_SPEED.args(jetpack.speedHoverSlow).toComponent());
-                builder.accept(ModTooltips.HOVER_ASCEND_SPEED.args(jetpack.speedHoverAscend).toComponent());
-                builder.accept(ModTooltips.HOVER_DESCEND_SPEED.args(jetpack.speedHoverDescend).toComponent());
-                builder.accept(ModTooltips.SPRINT_MODIFIER.args(jetpack.sprintSpeed).toComponent());
-                builder.accept(ModTooltips.SPRINT_VERTICAL_MODIFIER.args(jetpack.sprintSpeedVert).toComponent());
-                builder.accept(ModTooltips.SPRINT_FUEL_MODIFIER.args(jetpack.sprintFuel).toComponent());
-            }
-        }
-    }
-
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
-        var jetpack = JetpackUtils.getJetpack(stack);
-        return jetpack.createAttributeModifiers();
     }
 
     @Override
@@ -129,7 +104,6 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
     @Override
     public void initialize(ItemStack stack) {
         var jetpack = JetpackUtils.getJetpack(stack);
-
         stack.set(DataComponents.ATTRIBUTE_MODIFIERS, jetpack.createAttributeModifiers());
 
         if (stack.isEnchanted()) {
@@ -138,7 +112,6 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
                 case RARE -> Rarity.EPIC;
                 case EPIC -> jetpack.rarity;
             };
-
             stack.set(DataComponents.RARITY, rarity);
         } else {
             stack.set(DataComponents.RARITY, jetpack.rarity);

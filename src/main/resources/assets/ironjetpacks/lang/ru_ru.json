@@ -12,6 +12,25 @@
   "item.ironjetpacks.capacitor": "%s конденсатор",
   "item.ironjetpacks.jetpack": "%s реактивный ранец",
 
+  "jetpack.wood.name": "Дерево",
+  "jetpack.stone.name": "Камень",
+  "jetpack.copper.name": "Медь",
+  "jetpack.iron.name": "Железо",
+  "jetpack.gold.name": "Золото",
+  "jetpack.diamond.name": "Алмаз",
+  "jetpack.emerald.name": "Изумруд",
+  "jetpack.creative.name": "Творческий",
+  "jetpack.bronze.name": "Бронза",
+  "jetpack.silver.name": "Серебро",
+  "jetpack.steel.name": "Сталь",
+  "jetpack.electrum.name": "Электрум",
+  "jetpack.invar.name": "Инвар",
+  "jetpack.platinum.name": "Платина",
+
+  "keybind.ironjetpacks.hud": "Переключить HUD",
+  "keybind.ironjetpacks.ascend": "Подъем",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Режим переключения двигателя",
   "keybind.ironjetpacks.hover": "Режим переключения зависания",
   "keybind.ironjetpacks.descend": "Снижение",
@@ -25,6 +44,7 @@
   "tooltip.ironjetpacks.infinite": "Бесконечно",
   "tooltip.ironjetpacks.engine": "ДВИГАТЕЛЬ",
   "tooltip.ironjetpacks.hover": "ЗАВИСАНИЕ",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "УРОВЕНЬ %s",
   "tooltip.ironjetpacks.throttle": "Газ: %s",
   "tooltip.ironjetpacks.fuel_usage": "Потребление топлива: %s",
@@ -40,5 +60,8 @@
   "tooltip.ironjetpacks.toggle_engine": "Двигатель переключен на состояние: %s",
   "tooltip.ironjetpacks.toggle_hover": "Зависание переключено на состояние: %s",
   "tooltip.ironjetpacks.change_throttle": "Регулятор газа установлен на %s",
-  "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранца: %s"
+  "tooltip.ironjetpacks.toggle_hud": "HUD переключен: %s",
+  "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранца: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Удерживайте Shift для подробной информации"
 }

@@ -12,6 +12,22 @@
   "item.ironjetpacks.capacitor": "%s Capacitor",
   "item.ironjetpacks.jetpack": "%s Jetpack",
 
+  "jetpack.wood.name": "Wood",
+  "jetpack.stone.name": "Stone",
+  "jetpack.copper.name": "Copper",
+  "jetpack.iron.name": "Iron",
+  "jetpack.gold.name": "Gold",
+  "jetpack.diamond.name": "Diamond",
+  "jetpack.emerald.name": "Emerald",
+  "jetpack.creative.name": "Creative",
+  "jetpack.bronze.name": "Bronze",
+  "jetpack.silver.name": "Silver",
+  "jetpack.steel.name": "Steel",
+  "jetpack.electrum.name": "Electrum",
+  "jetpack.invar.name": "Invar",
+  "jetpack.platinum.name": "Platinum",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Toggle Engine",
   "keybind.ironjetpacks.hover": "Toggle Hover Mode",
   "keybind.ironjetpacks.hud": "Toggle HUD",
@@ -44,5 +60,9 @@
   "tooltip.ironjetpacks.toggle_hover": "Toggled Hover %s",
   "tooltip.ironjetpacks.toggle_hud": "Toggled HUD %s",
   "tooltip.ironjetpacks.change_throttle": "Throttle set to %s",
-  "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s"
+  "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Hold Shift for more information",
+
+  "tag.item.ironjetpacks.none": "None"
 }

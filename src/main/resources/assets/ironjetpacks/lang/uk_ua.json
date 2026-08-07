@@ -12,6 +12,25 @@
   "item.ironjetpacks.capacitor": "%s конденсатор",
   "item.ironjetpacks.jetpack": "%s реактивний ранець",
 
+  "jetpack.wood.name": "Дерев'яний",
+  "jetpack.stone.name": "Кам'яний",
+  "jetpack.copper.name": "Мідний",
+  "jetpack.iron.name": "Залізний",
+  "jetpack.gold.name": "Золотий",
+  "jetpack.diamond.name": "Алмазний",
+  "jetpack.emerald.name": "Смарагдовий",
+  "jetpack.creative.name": "Творчий",
+  "jetpack.bronze.name": "Бронзовий",
+  "jetpack.silver.name": "Срібний",
+  "jetpack.steel.name": "Сталевий",
+  "jetpack.electrum.name": "Електрумовий",
+  "jetpack.invar.name": "Інваровий",
+  "jetpack.platinum.name": "Платиновий",
+
+  "keybind.ironjetpacks.hud": "Перемкнути HUD",
+  "keybind.ironjetpacks.ascend": "Піднятися",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "Перемкнути рушій",
   "keybind.ironjetpacks.hover": "Перемкнути режим планерування",
   "keybind.ironjetpacks.descend": "Спуститися",
@@ -25,6 +44,7 @@
   "tooltip.ironjetpacks.infinite": "Нескінченність",
   "tooltip.ironjetpacks.engine": "РУШІЙ",
   "tooltip.ironjetpacks.hover": "ПЛАНЕРУВАННЯ",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "РІВЕНЬ %s",
   "tooltip.ironjetpacks.throttle": "Газ: %s",
   "tooltip.ironjetpacks.fuel_usage": "Використання палива: %s",
@@ -40,5 +60,8 @@
   "tooltip.ironjetpacks.toggle_engine": "Перемк. рушій %s",
   "tooltip.ironjetpacks.toggle_hover": "Перемк. планерування %s",
   "tooltip.ironjetpacks.change_throttle": "Газ встановлено на %s",
-  "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранця: %s"
+  "tooltip.ironjetpacks.toggle_hud": "HUD перемкнено на %s",
+  "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранця: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "Утримуйте Shift для додаткової інформації"
 }

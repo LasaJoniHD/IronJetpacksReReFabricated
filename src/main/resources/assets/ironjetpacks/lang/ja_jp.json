@@ -12,8 +12,25 @@
   "item.ironjetpacks.capacitor": "%sコンデンサー",
   "item.ironjetpacks.jetpack": "%sジェットパック",
 
+  "jetpack.wood.name": "木",
+  "jetpack.stone.name": "石",
+  "jetpack.copper.name": "銅",
+  "jetpack.iron.name": "鉄",
+  "jetpack.gold.name": "金",
+  "jetpack.diamond.name": "ダイヤモンド",
+  "jetpack.emerald.name": "エメラルド",
+  "jetpack.creative.name": "クリエイティブ",
+  "jetpack.bronze.name": "青銅",
+  "jetpack.silver.name": "銀",
+  "jetpack.steel.name": "鋼鉄",
+  "jetpack.electrum.name": "エレクトラム",
+  "jetpack.invar.name": "インバー",
+  "jetpack.platinum.name": "プラチナ",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "エンジンの切り替え",
   "keybind.ironjetpacks.hover": "ホバーモード",
+  "keybind.ironjetpacks.hud": "HUDの切り替え",
   "keybind.ironjetpacks.ascend": "上昇",
   "keybind.ironjetpacks.descend": "下降",
   "keybind.ironjetpacks.increment_throttle": "スロットルを上げる",
@@ -26,6 +43,7 @@
   "tooltip.ironjetpacks.infinite": "無限",
   "tooltip.ironjetpacks.engine": "エンジン",
   "tooltip.ironjetpacks.hover": "ホバー",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "ティア%s",
   "tooltip.ironjetpacks.throttle": "スロットル:%s",
   "tooltip.ironjetpacks.fuel_usage": "消費電力:%s",
@@ -41,5 +59,8 @@
   "tooltip.ironjetpacks.toggle_engine": "トグルエンジン%s",
   "tooltip.ironjetpacks.toggle_hover": "トグルホバー%s",
   "tooltip.ironjetpacks.change_throttle": "スロットルを%sに設定",
-  "tooltip.ironjetpacks.jetpack_id": "ジェットパックID:%s"
+  "tooltip.ironjetpacks.toggle_hud": "HUDを%sに切り替え",
+  "tooltip.ironjetpacks.jetpack_id": "ジェットパックID:%s",
+
+  "tooltip.cucumber.hold_shift_for_info": "詳細情報を見るにはShiftを押してください"
 }

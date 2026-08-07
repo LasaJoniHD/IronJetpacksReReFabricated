@@ -12,6 +12,22 @@
   "item.ironjetpacks.capacitor": "%s电容",
   "item.ironjetpacks.jetpack": "%s喷气背包",
 
+  "jetpack.wood.name": "木制",
+  "jetpack.stone.name": "石制",
+  "jetpack.copper.name": "铜制",
+  "jetpack.iron.name": "铁制",
+  "jetpack.gold.name": "金制",
+  "jetpack.diamond.name": "钻石",
+  "jetpack.emerald.name": "绿宝石",
+  "jetpack.creative.name": "创造模式",
+  "jetpack.bronze.name": "青铜",
+  "jetpack.silver.name": "银制",
+  "jetpack.steel.name": "钢制",
+  "jetpack.electrum.name": "琥珀金",
+  "jetpack.invar.name": "殷钢",
+  "jetpack.platinum.name": "铂制",
+
+  "key.category.ironjetpacks.keybindings": "Iron Jetpacks",
   "keybind.ironjetpacks.engine": "切换引擎",
   "keybind.ironjetpacks.hover": "切换悬停模式",
   "keybind.ironjetpacks.hud": "切换HUD",
@@ -28,7 +44,9 @@
   "tooltip.ironjetpacks.infinite": "无限",
   "tooltip.ironjetpacks.engine": "引擎",
   "tooltip.ironjetpacks.hover": "悬停",
+  "tooltip.ironjetpacks.hud": "HUD",
   "tooltip.ironjetpacks.tier": "等级：%s",
+  "tooltip.ironjetpacks.throttle": "油门：%s",
   "tooltip.ironjetpacks.fuel_usage": "燃料用量：%s",
   "tooltip.ironjetpacks.vertical_speed": "垂直速度：%s",
   "tooltip.ironjetpacks.vertical_acceleration": "垂直加速度：%s",
@@ -43,5 +61,8 @@
   "tooltip.ironjetpacks.toggle_hover": "切换悬停 %s",
   "tooltip.ironjetpacks.toggle_hud": "切换HUD %s",
   "tooltip.ironjetpacks.change_throttle": "油门调节至 %s",
-  "tooltip.ironjetpacks.jetpack_id": "喷气背包ID: %s"
+  "tooltip.ironjetpacks.toggle_hud": "切换HUD %s",
+  "tooltip.ironjetpacks.jetpack_id": "喷气背包ID: %s",
+
+  "tooltip.cucumber.hold_shift_for_info": "按住 Shift 查看详细信息"
 }

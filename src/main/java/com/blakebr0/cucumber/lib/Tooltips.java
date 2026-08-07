@@ -1,0 +1,22 @@
+package com.blakebr0.cucumber.lib;
+
+import com.blakebr0.cucumber.util.Tooltip;
+
+public final class Tooltips {
+    public static final Tooltip USES_LEFT = new Tooltip("tooltip.cucumber.uses_left");
+    public static final Tooltip ONE_USE_LEFT = new Tooltip("tooltip.cucumber.one_use_left");
+    public static final Tooltip UNLIMITED_USES = new Tooltip("tooltip.cucumber.unlimited_uses");
+    public static final Tooltip EMPTY = new Tooltip("tooltip.cucumber.empty");
+    public static final Tooltip FILLED = new Tooltip("tooltip.cucumber.filled");
+    public static final Tooltip HOLD_SHIFT_FOR_INFO = new Tooltip("tooltip.cucumber.hold_shift_for_info");
+    public static final Tooltip BLOCK_TAGS = new Tooltip("tooltip.cucumber.block_tags");
+    public static final Tooltip ITEM_TAGS = new Tooltip("tooltip.cucumber.item_tags");
+    public static final Tooltip FLUID_TAGS = new Tooltip("tooltip.cucumber.fluid_tags");
+    public static final Tooltip HOLD_CTRL_FOR_TAGS = new Tooltip("tooltip.cucumber.hold_ctrl_for_tags");
+    public static final Tooltip DATA_COMPONENTS = new Tooltip("tooltip.cucumber.data_components");
+    public static final Tooltip HOLD_ALT_FOR_DATA_COMPONENTS = new Tooltip("tooltip.cucumber.hold_alt_for_data_components");
+    public static final Tooltip NOT_YET_IMPLEMENTED = new Tooltip("tooltip.cucumber.not_yet_implemented");
+
+    private Tooltips() {
+    }
+}
