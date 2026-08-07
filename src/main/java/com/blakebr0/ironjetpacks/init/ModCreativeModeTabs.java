@@ -27,6 +27,9 @@ public final class ModCreativeModeTabs {
                             output.accept(ModItems.ADVANCED_COIL);
                             output.accept(ModItems.ELITE_COIL);
                             output.accept(ModItems.ULTIMATE_COIL);
+                            // Every configured variant is a distinct, usable stack because its
+                            // jetpack_id component selects the tier. Static recipes expose these
+                            // same variants to recipe viewers; keep them in the creative tab too.
                             for (var jetpack : JetpackRegistry.getInstance().getJetpacks()) {
                                 output.accept(JetpackUtils.getItemForComponent(ModItems.CELL, jetpack).create());
                                 output.accept(JetpackUtils.getItemForComponent(ModItems.THRUSTER, jetpack).create());

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "ironjetpacks:jetpacks",
+  "pattern": [
+    "MCM",
+    "MSM",
+    "T T"
+  ],
+  "key": {
+    "M": "#minecraft:planks",
+    "C": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:wood",
+      "component": "CAPACITOR"
+    },
+    "T": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:wood",
+      "component": "THRUSTER"
+    },
+    "S": "ironjetpacks:strap"
+  },
+  "result": {
+    "id": "ironjetpacks:jetpack",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:wood"
+    }
+  }
+}

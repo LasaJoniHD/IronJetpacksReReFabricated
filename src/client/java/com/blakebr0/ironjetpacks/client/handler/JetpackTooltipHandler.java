@@ -29,8 +29,9 @@ public final class JetpackTooltipHandler {
     }
 
     private static void appendAdvancedInfo(ItemStack stack, Item.TooltipContext context, TooltipFlag flag, List<Component> lines) {
-        if (!(stack.getItem() instanceof JetpackItem)
-                || !ModConfigs.ENABLE_ADVANCED_INFO_TOOLTIPS.get()) return;
+        if (!(stack.getItem() instanceof JetpackItem)) return;
+
+        if (!ModConfigs.ENABLE_ADVANCED_INFO_TOOLTIPS.get()) return;
 
         var jetpack = JetpackUtils.getJetpack(stack);
         var advanced = new ArrayList<Component>();

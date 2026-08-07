@@ -62,6 +62,9 @@
   "tooltip.ironjetpacks.change_throttle": "Accélérateur réglé sur %s",
   "tooltip.ironjetpacks.toggle_hud": "HUD basculé %s",
   "tooltip.ironjetpacks.jetpack_id": "ID du jetpack : %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Maintenez Maj pour plus d'informations"
+  "tooltip.cucumber.hold_shift_for_info": "Maintenez Maj pour plus d'informations",
+
+  "tag.item.curios.back": "Dos"
 }

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "ironjetpacks:jetpacks",
+  "pattern": [
+    "MCM",
+    "MJM",
+    "T T"
+  ],
+  "key": {
+    "M": "minecraft:gold_ingot",
+    "C": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:gold",
+      "component": "CAPACITOR"
+    },
+    "T": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:gold",
+      "component": "THRUSTER"
+    },
+    "J": {
+      "fabric:type": "ironjetpacks:jetpack_tier",
+      "tier": 2
+    }
+  },
+  "result": {
+    "id": "ironjetpacks:jetpack",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:gold"
+    }
+  }
+}

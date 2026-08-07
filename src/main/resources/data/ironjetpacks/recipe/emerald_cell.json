@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ironjetpacks:components",
+  "pattern": [
+    " R ",
+    "MCM",
+    " R "
+  ],
+  "key": {
+    "R": "minecraft:redstone",
+    "M": "minecraft:emerald",
+    "C": "ironjetpacks:ultimate_coil"
+  },
+  "result": {
+    "id": "ironjetpacks:cell",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:emerald"
+    }
+  }
+}

@@ -3,6 +3,7 @@ package com.blakebr0.ironjetpacks.item;
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.cucumber.iface.IComponentInitializer;
 import com.blakebr0.cucumber.item.BaseItem;
+import com.blakebr0.ironjetpacks.registry.JetpackRegistry;
 import com.blakebr0.ironjetpacks.util.JetpackUtils;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -11,12 +12,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
 public class ComponentItem extends BaseItem implements IColored, IComponentInitializer {
-	private final String type;
-	
-	public ComponentItem(Identifier id, String type) {
-		super(id);
-		this.type = type;
-	}
+	private final String type;    public ComponentItem(Identifier id, String type) {
+        super(id, properties -> properties.component(
+                com.blakebr0.ironjetpacks.init.ModDataComponentTypes.JETPACK_ID,
+                JetpackRegistry.getInstance().getDefaultJetpack().getId()
+        ));
+        this.type = type;
+    }
+
 
 	@Override
 	public Component getName(ItemStack stack) {

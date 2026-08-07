@@ -1,12 +1,10 @@
 package com.blakebr0.ironjetpacks;
 
-import com.blakebr0.ironjetpacks.crafting.DynamicRecipeManager;
 import com.blakebr0.ironjetpacks.config.ModConfigs;
 import com.blakebr0.ironjetpacks.init.ModCreativeModeTabs;
 import com.blakebr0.ironjetpacks.init.ModDataComponentTypes;
 import com.blakebr0.ironjetpacks.init.ModIngredientTypes;
 import com.blakebr0.ironjetpacks.init.ModItems;
-import com.blakebr0.ironjetpacks.init.ModRecipeSerializers;
 import com.blakebr0.ironjetpacks.init.ModSounds;
 import com.blakebr0.ironjetpacks.network.NetworkHandler;
 import com.blakebr0.ironjetpacks.registry.JetpackRegistry;
@@ -26,6 +24,7 @@ public final class IronJetpacks implements ModInitializer {
     public void onInitialize() {
         ModConfigs.load();
         ModDataComponentTypes.initialize();
+        JetpackRegistry.getInstance().loadJetpacks();
         ModItems.initialize();
         com.blakebr0.ironjetpacks.handler.RegisterCapabilityHandler.initialize();
         ModCreativeModeTabs.initialize();
@@ -33,7 +32,6 @@ public final class IronJetpacks implements ModInitializer {
         ModIngredientTypes.initialize();
         net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer.register(com.blakebr0.ironjetpacks.crafting.ingredient.JetpackComponentIngredient.SERIALIZER);
         net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer.register(com.blakebr0.ironjetpacks.crafting.ingredient.JetpackTierIngredient.SERIALIZER);
-        ModRecipeSerializers.initialize();
         NetworkHandler.initialize();
 
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) ->

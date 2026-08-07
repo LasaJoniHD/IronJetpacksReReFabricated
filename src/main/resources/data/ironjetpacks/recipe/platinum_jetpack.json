@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "ironjetpacks:jetpacks",
+  "pattern": [
+    "MCM",
+    "MJM",
+    "T T"
+  ],
+  "key": {
+    "M": "minecraft:diamond",
+    "C": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:platinum",
+      "component": "CAPACITOR"
+    },
+    "T": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:platinum",
+      "component": "THRUSTER"
+    },
+    "J": {
+      "fabric:type": "ironjetpacks:jetpack_tier",
+      "tier": 3
+    }
+  },
+  "result": {
+    "id": "ironjetpacks:jetpack",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:platinum"
+    }
+  }
+}

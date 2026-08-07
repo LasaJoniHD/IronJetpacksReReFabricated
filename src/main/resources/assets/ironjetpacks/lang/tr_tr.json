@@ -61,6 +61,9 @@
   "tooltip.ironjetpacks.change_throttle": "Gaz şuna ayarlandı: %s",
   "tooltip.ironjetpacks.toggle_hud": "HUD %s",
   "tooltip.ironjetpacks.jetpack_id": "Sırt Roketi ID'si: %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Daha fazla bilgi için Shift tuşunu basılı tutun"
+  "tooltip.cucumber.hold_shift_for_info": "Daha fazla bilgi için Shift tuşunu basılı tutun",
+
+  "tag.item.curios.back": "Sırt"
 }

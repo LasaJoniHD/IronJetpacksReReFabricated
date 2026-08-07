@@ -7,7 +7,7 @@
   ],
   "key": {
     "L": "minecraft:leather",
-    "I": "#c:nuggets/iron"
+    "I": "minecraft:iron_nugget"
   },
   "result": {
     "id": "ironjetpacks:strap"

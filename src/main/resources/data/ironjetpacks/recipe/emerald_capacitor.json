@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ironjetpacks:components",
+  "pattern": [
+    "MEM",
+    "MEM",
+    "MEM"
+  ],
+  "key": {
+    "M": "minecraft:emerald",
+    "E": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:emerald",
+      "component": "CELL"
+    }
+  },
+  "result": {
+    "id": "ironjetpacks:capacitor",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:emerald"
+    }
+  }
+}

@@ -13,6 +13,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
 import java.util.stream.Stream;
 
 public record JetpackTierIngredient(int tier) implements CustomIngredient {
@@ -33,5 +34,14 @@ public record JetpackTierIngredient(int tier) implements CustomIngredient {
     @Override public Stream<Holder<Item>> items() { return Stream.of(com.blakebr0.ironjetpacks.init.ModItems.JETPACK.builtInRegistryHolder()); }
     @Override public boolean requiresTesting() { return true; }
     @Override public CustomIngredientSerializer<?> getSerializer() { return SERIALIZER; }
+    @Override public SlotDisplay display() {
+        var displays = JetpackRegistry.getInstance().getJetpacks().stream()
+                .filter(jetpack -> jetpack.tier == this.tier)
+                .map(jetpack -> (SlotDisplay) new SlotDisplay.ItemStackSlotDisplay(JetpackUtils.getItemForJetpack(jetpack)))
+                .toList();
+        return displays.isEmpty()
+                ? SlotDisplay.Empty.INSTANCE
+                : displays.size() == 1 ? displays.getFirst() : new SlotDisplay.Composite(displays);
+    }
     @Override public Ingredient toVanilla() { return CustomIngredient.super.toVanilla(); }
 }

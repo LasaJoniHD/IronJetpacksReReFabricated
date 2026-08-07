@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ironjetpacks:components",
+  "pattern": [
+    "MEM",
+    "MEM",
+    "MEM"
+  ],
+  "key": {
+    "M": "minecraft:gold_ingot",
+    "E": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:electrum",
+      "component": "CELL"
+    }
+  },
+  "result": {
+    "id": "ironjetpacks:capacitor",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:electrum"
+    }
+  }
+}

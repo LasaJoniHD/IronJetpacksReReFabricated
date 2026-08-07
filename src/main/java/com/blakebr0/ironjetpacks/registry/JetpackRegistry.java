@@ -41,6 +41,12 @@ public final class JetpackRegistry {
     public List<Jetpack> getJetpacks() { return new ArrayList<>(jetpacks.values()); }
     public List<Integer> getAllTiers() { return tiers; }
     public Integer getLowestTier() { return lowestTier; }
+    public Jetpack getDefaultJetpack() {
+        return jetpacks.values().stream()
+                .filter(jetpack -> !jetpack.creative && !jetpack.disabled)
+                .min(Comparator.comparingInt(Jetpack::getTier))
+                .orElse(Jetpack.UNDEFINED);
+    }
     public Jetpack getJetpackById(Identifier id) { return jetpacks.getOrDefault(id, Jetpack.UNDEFINED); }
 
     public Item getCoilForTier(int tier) {
@@ -62,7 +68,14 @@ public final class JetpackRegistry {
 
     public void writeDefaultJetpackFiles() {
         var dir = configDir().resolve("ironjetpacks/jetpacks").toFile();
-        if (!dir.exists() && dir.mkdirs()) for (var jetpack : ModJetpacks.getDefaults()) writeJetpack(new File(dir, jetpack.name + ".json"), jetpack.toJson());
+        if (!dir.exists() && !dir.mkdirs()) {
+            IronJetpacks.LOGGER.warn("Could not create jetpack configuration directory {}", dir);
+            return;
+        }
+        for (var jetpack : ModJetpacks.getDefaults()) {
+            var file = new File(dir, jetpack.name + ".json");
+            if (!file.isFile()) writeJetpack(file, jetpack.toJson());
+        }
     }
 
     public void loadJetpacks() {

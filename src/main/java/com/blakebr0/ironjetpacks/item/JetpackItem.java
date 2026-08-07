@@ -6,7 +6,9 @@ import com.blakebr0.cucumber.item.BaseArmorItem;
 import com.blakebr0.cucumber.util.Formatting;
 import com.blakebr0.ironjetpacks.config.ModConfigs;
 import com.blakebr0.ironjetpacks.lib.ModArmorMaterials;
+import com.blakebr0.ironjetpacks.registry.JetpackRegistry;
 import com.blakebr0.ironjetpacks.lib.ModTooltips;
+import com.blakebr0.ironjetpacks.init.ModDataComponentTypes;
 import com.blakebr0.ironjetpacks.util.JetpackUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -17,7 +19,6 @@ import net.minecraft.util.Unit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.Enchantable;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -29,6 +30,7 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
         super(id, ModArmorMaterials.JETPACK, ArmorType.CHESTPLATE, p -> p
                 .stacksTo(1)
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+                .component(ModDataComponentTypes.JETPACK_ID, JetpackRegistry.getInstance().getDefaultJetpack().getId())
         );
     }
 
@@ -63,8 +65,6 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
-        builder.accept(Component.translatable("itemGroup.ironjetpacks").withStyle(ChatFormatting.BLUE));
-
         var jetpack = JetpackUtils.getJetpack(stack);
 
         if (flag.isAdvanced()) {

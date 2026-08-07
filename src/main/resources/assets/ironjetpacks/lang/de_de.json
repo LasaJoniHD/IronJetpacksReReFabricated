@@ -62,6 +62,9 @@
   "tooltip.ironjetpacks.change_throttle": "Schub gesetzt auf %s",
   "tooltip.ironjetpacks.toggle_hud": "HUD umgeschaltet %s",
   "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Shift gedrückt halten für weitere Informationen"
+  "tooltip.cucumber.hold_shift_for_info": "Shift gedrückt halten für weitere Informationen",
+
+  "tag.item.curios.back": "Rücken"
 }

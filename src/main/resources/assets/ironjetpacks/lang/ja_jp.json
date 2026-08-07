@@ -61,6 +61,9 @@
   "tooltip.ironjetpacks.change_throttle": "スロットルを%sに設定",
   "tooltip.ironjetpacks.toggle_hud": "HUDを%sに切り替え",
   "tooltip.ironjetpacks.jetpack_id": "ジェットパックID:%s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "詳細情報を見るにはShiftを押してください"
+  "tooltip.cucumber.hold_shift_for_info": "詳細情報を見るにはShiftを押してください",
+
+  "tag.item.curios.back": "背中"
 }

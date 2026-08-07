@@ -6,9 +6,9 @@
     "RD "
   ],
   "key": {
-    "R": "#c:dusts/redstone",
-    "D": "#c:gems/diamond",
-    "S": "#c:rods/wooden"
+    "R": "minecraft:redstone",
+    "D": "minecraft:diamond",
+    "S": "minecraft:stick"
   },
   "result": {
     "id": "ironjetpacks:elite_coil"

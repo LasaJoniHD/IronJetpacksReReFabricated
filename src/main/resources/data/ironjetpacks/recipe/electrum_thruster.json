@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ironjetpacks:components",
+  "pattern": [
+    "MCM",
+    "CEC",
+    "MFM"
+  ],
+  "key": {
+    "M": "minecraft:gold_ingot",
+    "C": "ironjetpacks:elite_coil",
+    "E": {
+      "fabric:type": "ironjetpacks:jetpack_component",
+      "jetpack": "ironjetpacks:electrum",
+      "component": "CELL"
+    },
+    "F": "minecraft:furnace"
+  },
+  "result": {
+    "id": "ironjetpacks:thruster",
+    "components": {
+      "ironjetpacks:jetpack_id": "ironjetpacks:electrum"
+    }
+  }
+}

@@ -61,8 +61,10 @@
   "tooltip.ironjetpacks.toggle_hud": "Toggled HUD %s",
   "tooltip.ironjetpacks.change_throttle": "Throttle set to %s",
   "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
   "tooltip.cucumber.hold_shift_for_info": "Hold Shift for more information",
 
+  "tag.item.curios.back": "Back",
   "tag.item.ironjetpacks.none": "None"
 }

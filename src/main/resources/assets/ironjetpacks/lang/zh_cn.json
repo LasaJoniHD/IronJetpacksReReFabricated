@@ -63,6 +63,9 @@
   "tooltip.ironjetpacks.change_throttle": "油门调节至 %s",
   "tooltip.ironjetpacks.toggle_hud": "切换HUD %s",
   "tooltip.ironjetpacks.jetpack_id": "喷气背包ID: %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "按住 Shift 查看详细信息"
+  "tooltip.cucumber.hold_shift_for_info": "按住 Shift 查看详细信息",
+
+  "tag.item.curios.back": "背部"
 }

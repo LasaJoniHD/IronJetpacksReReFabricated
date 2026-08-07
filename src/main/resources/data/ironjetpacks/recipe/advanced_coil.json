@@ -6,9 +6,9 @@
     "RD "
   ],
   "key": {
-    "R": "#c:dusts/redstone",
-    "D": "#c:ingots/gold",
-    "S": "#c:rods/wooden"
+    "R": "minecraft:redstone",
+    "D": "minecraft:gold_ingot",
+    "S": "minecraft:stick"
   },
   "result": {
     "id": "ironjetpacks:advanced_coil"

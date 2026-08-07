@@ -14,6 +14,7 @@ import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -133,13 +134,17 @@ public class Jetpack {
 			if (!this.craftingMaterialString.equalsIgnoreCase("null")) {
 				var parts = craftingMaterialString.split(":");
 				if (parts.length >= 3 && this.craftingMaterialString.startsWith("tag:")) {
-					var tag = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, Identifier.fromNamespaceAndPath(parts[1], parts[2]));
-
-					registries.get(tag)
+					var tag = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+							Identifier.fromNamespaceAndPath(parts[1], parts[2]));
+					registries.lookupOrThrow(net.minecraft.core.registries.Registries.ITEM).get(tag)
 							.ifPresent(items -> this.craftingMaterial = Ingredient.of(items));
+					if (this.craftingMaterial == null && "c".equals(parts[1])) {
+						var fallback = commonMaterialFallback(parts[2]);
+						if (fallback != null) this.craftingMaterial = Ingredient.of(fallback);
+					}
 				} else if (parts.length >= 2) {
 					BuiltInRegistries.ITEM.getOptional(Identifier.fromNamespaceAndPath(parts[0], parts[1]))
-                            .ifPresent(value -> this.craftingMaterial = Ingredient.of(value));
+							.ifPresent(value -> this.craftingMaterial = Ingredient.of(value));
 				}
 			}
 
@@ -148,6 +153,17 @@ public class Jetpack {
 
 		return this.craftingMaterial;
 	}
+
+    private static net.minecraft.world.item.Item commonMaterialFallback(String path) {
+        return switch (path) {
+            case "stones" -> Items.STONE;
+            case "ingots/iron" -> Items.IRON_INGOT;
+            case "ingots/gold" -> Items.GOLD_INGOT;
+            case "gems/diamond" -> Items.DIAMOND;
+            case "gems/emerald" -> Items.EMERALD;
+            default -> null;
+        };
+    }
 
 	public Component getDisplayName() {
 		var key = String.format("jetpack.%s.name", this.name.replace(" ", "_"));        return Component.translatableWithFallback(key, this.displayName);

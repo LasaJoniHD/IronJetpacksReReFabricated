@@ -62,6 +62,9 @@
   "tooltip.ironjetpacks.change_throttle": "Регулятор газа установлен на %s",
   "tooltip.ironjetpacks.toggle_hud": "HUD переключен: %s",
   "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранца: %s",
+  "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Удерживайте Shift для подробной информации"
+  "tooltip.cucumber.hold_shift_for_info": "Удерживайте Shift для подробной информации",
+
+  "tag.item.curios.back": "Спина"
 }

@@ -3,6 +3,8 @@ package com.blakebr0.ironjetpacks.crafting.ingredient;
 import com.blakebr0.ironjetpacks.IronJetpacks;
 import com.blakebr0.ironjetpacks.init.ModDataComponentTypes;
 import com.blakebr0.ironjetpacks.init.ModItems;
+import com.blakebr0.ironjetpacks.registry.Jetpack;
+import com.blakebr0.ironjetpacks.registry.JetpackRegistry;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredient;
@@ -14,6 +16,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
 import java.util.stream.Stream;
 
 public record JetpackComponentIngredient(Identifier jetpack, ComponentType type) implements CustomIngredient {
@@ -31,6 +34,12 @@ public record JetpackComponentIngredient(Identifier jetpack, ComponentType type)
     @Override public Stream<Holder<Item>> items() { return Stream.of(type.item.builtInRegistryHolder()); }
     @Override public boolean requiresTesting() { return true; }
     @Override public CustomIngredientSerializer<?> getSerializer() { return SERIALIZER; }
+    @Override public SlotDisplay display() {
+        var jetpack = JetpackRegistry.getInstance().getJetpackById(this.jetpack);
+        return jetpack == Jetpack.UNDEFINED
+                ? SlotDisplay.Empty.INSTANCE
+                : new SlotDisplay.ItemStackSlotDisplay(com.blakebr0.ironjetpacks.util.JetpackUtils.getItemForComponent(this.type.item, jetpack));
+    }
     @Override public Ingredient toVanilla() { return CustomIngredient.super.toVanilla(); }
 
     public enum ComponentType {
