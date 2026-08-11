@@ -64,7 +64,5 @@
   "tooltip.ironjetpacks.jetpack_id": "ID реактивного ранця: %s",
   "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Утримуйте Shift для додаткової інформації",
-
-  "tag.item.curios.back": "Спина"
+  "tooltip.cucumber.hold_shift_for_info": "Утримуйте Shift для додаткової інформації"
 }

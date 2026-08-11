@@ -64,7 +64,5 @@
   "tooltip.ironjetpacks.jetpack_id": "Jetpack ID: %s",
   "tooltip.ironjetpacks.brand": "Iron Jetpacks",
 
-  "tooltip.cucumber.hold_shift_for_info": "Shift gedrückt halten für weitere Informationen",
-
-  "tag.item.curios.back": "Rücken"
+  "tooltip.cucumber.hold_shift_for_info": "Shift gedrückt halten für weitere Informationen"
 }

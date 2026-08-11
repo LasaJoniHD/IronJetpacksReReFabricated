@@ -28,11 +28,6 @@ public final class ModConfigs {
     public static final BoolValue SHOW_HUD_OVER_CHAT = new BoolValue("showHudOverChat", false);
 
     public static final BoolValue ENCHANTABLE_JETPACKS = new BoolValue("enchantableJetpacks", false);
-    public static final BoolValue ENABLE_CURIOS_INTEGRATION = new BoolValue("curiosIntegration", false);
-    public static final BoolValue ENABLE_CELL_RECIPES = new BoolValue("cellRecipes", true);
-    public static final BoolValue ENABLE_THRUSTER_RECIPES = new BoolValue("thrusterRecipes", true);
-    public static final BoolValue ENABLE_CAPACITOR_RECIPES = new BoolValue("capacitorRecipes", true);
-    public static final BoolValue ENABLE_JETPACK_RECIPES = new BoolValue("jetpackRecipes", true);
 
     private ModConfigs() {
     }
@@ -59,11 +54,6 @@ public final class ModConfigs {
         HUD_ANIMATION_SPEED.load(values);
         SHOW_HUD_OVER_CHAT.load(values);
         ENCHANTABLE_JETPACKS.load(values);
-        ENABLE_CURIOS_INTEGRATION.load(values);
-        ENABLE_CELL_RECIPES.load(values);
-        ENABLE_THRUSTER_RECIPES.load(values);
-        ENABLE_CAPACITOR_RECIPES.load(values);
-        ENABLE_JETPACK_RECIPES.load(values);
 
         try {
             Files.createDirectories(CONFIG_FILE.getParent());
@@ -73,22 +63,6 @@ public final class ModConfigs {
         } catch (Exception e) {
             IronJetpacks.LOGGER.error("Could not write config {}", CONFIG_FILE, e);
         }
-    }
-
-    public static boolean isCuriosInstalled() {
-        return false;
-    }
-
-    public static boolean isControllableInstalled() {
-        return false;
-    }
-
-    public static boolean isCuriosEnabled() {
-        return false;
-    }
-
-    public static boolean isModLoaded(String id) {
-        return FabricLoader.getInstance().isModLoaded(id);
     }
 
     public static final class BoolValue {

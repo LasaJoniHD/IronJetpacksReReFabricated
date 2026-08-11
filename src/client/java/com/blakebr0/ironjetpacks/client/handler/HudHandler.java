@@ -18,6 +18,11 @@ import net.minecraft.world.item.ItemStack;
 
 public final class HudHandler {
     private static final Identifier ID = IronJetpacks.id("jetpack_hud");
+    // hud.png holds the HUD artwork at half resolution: the frame (28x156) and
+    // energy fill (28x156) of the original 256x256 design are 14x78 each here.
+    // The blits keep the 256x256 UV scale the art was authored for, which maps
+    // exactly onto this file (u=28 -> x=14, v=156 -> y=78). Do NOT change the
+    // texture dimensions to 128x128; it would sample the wrong regions.
     private static final Identifier HUD_TEXTURE = IronJetpacks.id("textures/gui/hud.png");
 
     // 0 = fully shown, 1 = fully hidden.

@@ -43,7 +43,7 @@ public record JetpackComponentIngredient(Identifier jetpack, ComponentType type)
     @Override public Ingredient toVanilla() { return CustomIngredient.super.toVanilla(); }
 
     public enum ComponentType {
-        CELL(ModItems.CELL), THRUSTER(ModItems.THRUSTER), CAPACITOR(ModItems.CAPACITOR), JETPACK(ModItems.JETPACK);
+        CELL(ModItems.CELL), THRUSTER(ModItems.THRUSTER), CAPACITOR(ModItems.CAPACITOR);
         public static final com.mojang.serialization.Codec<ComponentType> CODEC = com.mojang.serialization.Codec.STRING.xmap(ComponentType::valueOf, Enum::name);
         private final Item item;
         ComponentType(Item item) { this.item = item; }

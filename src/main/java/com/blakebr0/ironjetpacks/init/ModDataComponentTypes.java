@@ -7,8 +7,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
 
 public final class ModDataComponentTypes {
-    public static void initialize() {
-    }
+    // The data components below register themselves through their static field
+    // initializers; the class is loaded early by item registration.
 
     public static final DataComponentType<net.minecraft.resources.Identifier> JETPACK_ID = register(
             "jetpack_id", DataComponentType.<net.minecraft.resources.Identifier>builder()

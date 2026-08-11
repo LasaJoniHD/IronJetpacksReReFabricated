@@ -118,7 +118,7 @@ public class JetpackItem extends BaseArmorItem implements IColored, IComponentIn
         }
 
         if (ModConfigs.ENCHANTABLE_JETPACKS.get()) {
-            stack.set(DataComponents.ENCHANTABLE, new Enchantable(jetpack.enchantablilty));
+            stack.set(DataComponents.ENCHANTABLE, new Enchantable(jetpack.enchantability));
         }
     }
 }
