@@ -8,6 +8,7 @@ group = project.maven_group
 
 repositories {
 	maven { url 'https://maven.blakesmods.com' }
+	maven { url 'https://maven.blamejared.com' }
 }
 
 loom {
@@ -27,6 +28,10 @@ dependencies {
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	implementation 'teamreborn:energy:5.0.0'
 	include 'teamreborn:energy:5.0.0'
+
+	// Compile-only JEI API: JEI remains optional at runtime, but can distinguish
+	// our data-component item variants when it is installed.
+	compileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
 }
 
 processResources {

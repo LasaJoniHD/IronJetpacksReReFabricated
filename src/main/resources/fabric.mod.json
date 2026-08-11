@@ -5,7 +5,8 @@
 	"name": "Iron Jetpacks",
 	"description": "A fully customizable energy-powered jetpacks mod.",
 	"authors": [
-		"BlakeBr0"
+		"BlakeBr0",
+		"Joni"
 	],
 	"contact": {
 		"homepage": "https://blakesmods.com/iron-jetpacks",
@@ -26,6 +27,12 @@
 		],
 		"client": [
 			"com.blakebr0.ironjetpacks.client.IronJetpacksClient"
+		],
+		"jei_mod_plugin": [
+			{
+				"value": "com.blakebr0.ironjetpacks.client.compat.JeiCompat",
+				"environment": "client"
+			}
 		]
 	},
 	"depends": {

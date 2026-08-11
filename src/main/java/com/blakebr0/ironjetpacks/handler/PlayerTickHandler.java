@@ -17,7 +17,7 @@ public final class PlayerTickHandler {
         if (stack.getItem() instanceof JetpackItem && JetpackUtils.isEngineOn(stack)) {
             var hover = JetpackUtils.isHovering(stack);
             boolean ascending = InputHandler.isHoldingUp(player);
-            boolean descending = InputHandler.isHoldingDown(player);
+            boolean descending = InputHandler.isHoldingDown(player) && !player.onGround();
             boolean hoveringInAir = hover && !player.onGround();
             if (ascending || descending || hoveringInAir) {
                 var jetpack = JetpackUtils.getJetpack(stack);

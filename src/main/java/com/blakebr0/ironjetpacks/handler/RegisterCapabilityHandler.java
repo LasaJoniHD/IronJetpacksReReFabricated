@@ -3,7 +3,6 @@ package com.blakebr0.ironjetpacks.handler;
 import com.blakebr0.ironjetpacks.init.ModItems;
 import com.blakebr0.ironjetpacks.util.JetpackEnergyStorage;
 import com.blakebr0.ironjetpacks.util.JetpackUtils;
-import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import team.reborn.energy.api.EnergyStorage;
 
 public final class RegisterCapabilityHandler {

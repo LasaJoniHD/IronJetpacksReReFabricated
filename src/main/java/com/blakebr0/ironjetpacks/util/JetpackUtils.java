@@ -23,7 +23,10 @@ public final class JetpackUtils {
             var jetpack = getJetpack(stack);
             var energy = getEnergyStorage(stack);
             if (energy.getAmount() > 0 || player.isCreative() || jetpack.creative) {
-                return isHovering(stack) ? !player.onGround() : InputHandler.isHoldingUp(player);
+                return isHovering(stack)
+                        ? !player.onGround()
+                        : InputHandler.isHoldingUp(player)
+                                || (InputHandler.isHoldingDown(player) && !player.onGround());
             }
         }
         return false;
