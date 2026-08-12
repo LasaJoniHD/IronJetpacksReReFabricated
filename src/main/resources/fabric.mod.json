@@ -12,7 +12,7 @@
 		"homepage": "https://blakesmods.com/iron-jetpacks",
 		"sources": "https://github.com/BlakeBr0/IronJetpacks"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"environment": "*",
 	"mixins": [
 		"iron-jetpacks.mixins.json",

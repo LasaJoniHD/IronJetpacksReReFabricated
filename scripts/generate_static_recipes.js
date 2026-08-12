@@ -25,10 +25,11 @@ const coilForTier = tier => tier <= 1 ? 'basic_coil'
   : tier <= 3 ? 'elite_coil'
   : 'ultimate_coil';
 
-const result = (item, name) => ({
-  id: `ironjetpacks:${item}`,
-  components: { 'ironjetpacks:jetpack_id': `ironjetpacks:${name}` },
-});
+const result = (item, name) => {
+  const components = { 'ironjetpacks:jetpack_id': `ironjetpacks:${name}` };
+  if (item === 'jetpack') components['team_reborn_energy:energy'] = 0;
+  return { id: `ironjetpacks:${item}`, components };
+};
 
 const component = (name, type) => ({
   'fabric:type': 'ironjetpacks:jetpack_component',

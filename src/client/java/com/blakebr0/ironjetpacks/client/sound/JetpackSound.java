@@ -30,7 +30,9 @@ public class JetpackSound extends AbstractTickableSoundInstance {
         var pos = this.player.position();
 
         this.x = (float) pos.x();
-        this.y = (float) pos.y() - 10;
+        // Keep the sound near the jetpack. Ten blocks below the player causes
+        // heavy distance attenuation and makes the engine sound nearly inaudible.
+        this.y = (float) pos.y() + 1.0F;
         this.z = (float) pos.z();
         
         if (!JetpackUtils.isFlying(this.player)) {

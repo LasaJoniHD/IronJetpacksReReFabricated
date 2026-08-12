@@ -70,7 +70,10 @@ public final class JetpackUtils {
     public static boolean toggleHUD(ItemStack stack) { boolean current = isHUDEnabled(stack); stack.set(ModDataComponentTypes.JETPACK_HUD, !current); return !current; }
 
     public static ItemStackTemplate getItemForJetpack(Jetpack jetpack) {
-        var components = DataComponentPatch.builder().set(ModDataComponentTypes.JETPACK_ID, jetpack.getId()).build();
+        var components = DataComponentPatch.builder()
+                .set(ModDataComponentTypes.JETPACK_ID, jetpack.getId())
+                .set(EnergyStorage.ENERGY_COMPONENT, 0L)
+                .build();
         return new ItemStackTemplate(ModItems.JETPACK, components);
     }
 

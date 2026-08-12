@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import team.reborn.energy.api.EnergyStorage;
 
 public final class ModCreativeModeTabs {
     public static CreativeModeTab CREATIVE_TAB;
@@ -34,7 +35,16 @@ public final class ModCreativeModeTabs {
                                 output.accept(JetpackUtils.getItemForComponent(ModItems.CELL, jetpack).create());
                                 output.accept(JetpackUtils.getItemForComponent(ModItems.THRUSTER, jetpack).create());
                                 output.accept(JetpackUtils.getItemForComponent(ModItems.CAPACITOR, jetpack).create());
-                                output.accept(JetpackUtils.getItemForJetpack(jetpack).create());
+                                var emptyJetpack = JetpackUtils.getItemForJetpack(jetpack).create();
+                                output.accept(emptyJetpack);
+
+                                // Infinite jetpacks have zero capacity, so their empty and full
+                                // stacks are identical. Adding both would crash the tab builder.
+                                if (jetpack.capacity > 0) {
+                                    var chargedJetpack = emptyJetpack.copy();
+                                    chargedJetpack.set(EnergyStorage.ENERGY_COMPONENT, (long) jetpack.capacity);
+                                    output.accept(chargedJetpack);
+                                }
                             }
                         })
                         .build()

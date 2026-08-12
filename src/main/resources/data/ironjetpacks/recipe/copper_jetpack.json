@@ -27,7 +27,8 @@
   "result": {
     "id": "ironjetpacks:jetpack",
     "components": {
-      "ironjetpacks:jetpack_id": "ironjetpacks:copper"
+      "ironjetpacks:jetpack_id": "ironjetpacks:copper",
+      "team_reborn_energy:energy": 0
     }
   }
 }
