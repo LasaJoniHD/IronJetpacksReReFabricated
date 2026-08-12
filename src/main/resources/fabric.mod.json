@@ -4,6 +4,7 @@
 	"version": "${version}",
 	"name": "Iron Jetpacks",
 	"description": "A fully customizable energy-powered jetpacks mod.",
+	"icon": "assets/ironjetpacks/icon.png",
 	"authors": [
 		"BlakeBr0",
 		"Joni"
