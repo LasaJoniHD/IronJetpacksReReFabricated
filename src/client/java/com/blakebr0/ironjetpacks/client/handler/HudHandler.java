@@ -159,9 +159,8 @@ public final class HudHandler {
     }
 
     private static boolean isVisible(Minecraft mc) {
-        return ModConfigs.ENABLE_HUD.get()
-                && (ModConfigs.SHOW_HUD_OVER_CHAT.get() || !(mc.screen instanceof ChatScreen))
-                && !mc.options.hideGui
+        return ModConfigs.ENABLE_HUD.get()				&& (ModConfigs.SHOW_HUD_OVER_CHAT.get() || !(mc.gui.screen() instanceof ChatScreen))
+				&& !mc.gui.hud.isHidden()
                 && !mc.getDebugOverlay().showDebugScreen();
     }
 
