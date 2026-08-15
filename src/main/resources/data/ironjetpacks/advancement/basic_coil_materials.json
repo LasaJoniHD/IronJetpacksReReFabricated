@@ -1,0 +1,127 @@
+{
+  "display": {
+    "icon": {
+      "id": "ironjetpacks:jetpack"
+    },
+    "title": "Jetpack Technology",
+    "description": "Gather enough materials to begin building Jetpacks",
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "recipes": [
+      "ironjetpacks:advanced_coil",
+      "ironjetpacks:basic_coil",
+      "ironjetpacks:bronze_capacitor",
+      "ironjetpacks:bronze_cell",
+      "ironjetpacks:bronze_jetpack",
+      "ironjetpacks:bronze_thruster",
+      "ironjetpacks:copper_capacitor",
+      "ironjetpacks:copper_cell",
+      "ironjetpacks:copper_jetpack",
+      "ironjetpacks:copper_thruster",
+      "ironjetpacks:diamond_capacitor",
+      "ironjetpacks:diamond_cell",
+      "ironjetpacks:diamond_jetpack",
+      "ironjetpacks:diamond_thruster",
+      "ironjetpacks:electrum_capacitor",
+      "ironjetpacks:electrum_cell",
+      "ironjetpacks:electrum_jetpack",
+      "ironjetpacks:electrum_thruster",
+      "ironjetpacks:elite_coil",
+      "ironjetpacks:emerald_capacitor",
+      "ironjetpacks:emerald_cell",
+      "ironjetpacks:emerald_jetpack",
+      "ironjetpacks:emerald_thruster",
+      "ironjetpacks:gold_capacitor",
+      "ironjetpacks:gold_cell",
+      "ironjetpacks:gold_jetpack",
+      "ironjetpacks:gold_thruster",
+      "ironjetpacks:invar_capacitor",
+      "ironjetpacks:invar_cell",
+      "ironjetpacks:invar_jetpack",
+      "ironjetpacks:invar_thruster",
+      "ironjetpacks:iron_capacitor",
+      "ironjetpacks:iron_cell",
+      "ironjetpacks:iron_jetpack",
+      "ironjetpacks:iron_thruster",
+      "ironjetpacks:platinum_capacitor",
+      "ironjetpacks:platinum_cell",
+      "ironjetpacks:platinum_jetpack",
+      "ironjetpacks:platinum_thruster",
+      "ironjetpacks:silver_capacitor",
+      "ironjetpacks:silver_cell",
+      "ironjetpacks:silver_jetpack",
+      "ironjetpacks:silver_thruster",
+      "ironjetpacks:steel_capacitor",
+      "ironjetpacks:steel_cell",
+      "ironjetpacks:steel_jetpack",
+      "ironjetpacks:steel_thruster",
+      "ironjetpacks:stone_capacitor",
+      "ironjetpacks:stone_cell",
+      "ironjetpacks:stone_jetpack",
+      "ironjetpacks:stone_thruster",
+      "ironjetpacks:strap",
+      "ironjetpacks:ultimate_coil",
+      "ironjetpacks:wood_capacitor",
+      "ironjetpacks:wood_cell",
+      "ironjetpacks:wood_jetpack",
+      "ironjetpacks:wood_thruster"
+    ]
+  },
+  "criteria": {
+    "iron_ingots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot",
+            "count": {
+              "min": 4
+            }
+          }
+        ]
+      }
+    },
+    "redstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:redstone",
+            "count": {
+              "min": 2
+            }
+          }
+        ]
+      }
+    },
+    "stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stick",
+            "count": {
+              "min": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_ingots"
+    ],
+    [
+      "redstone"
+    ],
+    [
+      "stick"
+    ]
+  ]
+}
